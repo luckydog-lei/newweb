@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            color: brown;
+            width: 800px;
+            height: 40px;
+            background: -webkit-linear-gradient(top left, pink, yellow);
+            border: 1px solid white;
+            margin: 0 auto;
+            overflow: hidden;
+  
+        }
+        #btn{
+            text-align: center;
+
+        }
+        #p{
+            color: brown;
+            font-family:"宋体";
+        }
+        #p1{
+            line-height: 50px;
+
+        }
+        #p2{
+            line-height: 50px;
+
+        }
+        #p3{
+            line-height: 50px;
+        }
+        #div{
+            background-color: rgb(248, 246, 246);
+            height: 800px;
+            width: 600px;
+            margin: auto;
+        }
+        #hide{
+            display: none;
+            background-color:rgb(200, 235, 160);
+            height: 800px;
+            width: 600px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div" class="div">
+        <div class="title">
+            请勿抄袭或者作弊
+
+        </div>
+        <p id="p">小学数学5分钟答题竞赛</p>
+        <p id="btn">
+            <button id="btn1">开始比赛</button></p>
+    </div>
+
+    <div id="hide" class="hide">
+        <p id="p1">你还有:<span id="span1"></span>s                  
+        <p id="p2"><span id="span3"></span>+<span id="span4"></span>=<input id="input"></p>
+        <p id="p3"><button id="btn3">next</button> <button id="btn4">提前交卷</button></p>
+    </div>
+    
+</body>
+<script>
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var btn3 = document.getElementById("btn3");
+    var btn4 = document.getElementById("btn4");
+    var div = document.getElementById("div");
+    var hide = document.getElementById("hide");
+    var span1 = document.getElementById("span1");
+    var span2 = document.getElementById("span2");
+    var span3 = document.getElementById("span3");
+    var span4 = document.getElementById("span4");
+    var input = document.getElementById("input");
+    var title = document.getElementsByClassName("title");
+    var n = 30;
+    var m = 0;
+    var a =Math.round(parseInt(Math.random()*100));
+    var b =Math.round(parseInt(Math.random()*100)); 
+    title[0].style.marginLeft = "0";
+    var intervalId = setInterval(function(){
+        var marginLeft = parseInt(title[0].style.marginLeft);
+        if(marginLeft >= 480){
+            title[0].style.marginLeft = "0";
+            marginLeft = 0;
+        }
+        title[0].style.marginLeft = (marginLeft + 1) + "px";
+    },10)
+    btn1.onclick = function(){
+        div.style.display = "none";
+        hide.style.display = "block";
+        n= 60;
+        d = setInterval(function(){
+            n -= 1;
+            span1.innerHTML = n;
+            if(n == 0){
+            alert("比赛结束");
+            div.style.display = "block";
+            hide.style.display = "none";
+            }
+        }, 1000);
+    }
+    span3.innerHTML = a;
+    span4.innerHTML = b;
+    input.innerText = "";
+    btn3.onclick = function(){
+
+        a = Math.round(parseInt(Math.random()*100));
+        b = Math.round(parseInt(Math.random()*100));
+        span3.innerHTML = a;
+        span4.innerHTML = b;
+        input.innerText = "";
+    }
+    btn4.onclick = function(){
+        alert("比赛结束");
+        div.style.display = "block";
+        hide.style.display = "none";
+    }
+    
+
+</script>
+</html>
